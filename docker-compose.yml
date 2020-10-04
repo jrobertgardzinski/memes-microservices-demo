@@ -23,3 +23,10 @@ services:
     environment:    
       DATABASESERVER_PORT:      "5432"
       CONFIGSERVER_PORT:        "8888"
+  service-images-metadata:
+    build: './service-images-metadata/'
+    ports:
+      - "8081:8081"
+    environment:    
+      DATABASESERVER_PORT:      "5432"
+      CONFIGSERVER_PORT:        "8888"

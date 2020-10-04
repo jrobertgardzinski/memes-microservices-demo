@@ -20,6 +20,7 @@
     <module>server-configuration</module>
     <module>server-eureka</module>
     <module>service-images</module>
+    <module>service-images-metadata</module>
   </modules>
   <build>
     <plugins>
