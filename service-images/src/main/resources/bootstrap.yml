@@ -1,7 +1,7 @@
 spring:
   application:
     name: 
-      images-service
+      service-images
   profiles:
     active:
       default
