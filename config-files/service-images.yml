@@ -1,6 +1,6 @@
 spring:
   application:
-    name: images-service
+    name: service-images
   datasource:
     platform: postgres
     driver-class-name: org.postgresql.Driver
