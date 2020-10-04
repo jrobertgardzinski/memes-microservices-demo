@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: images-reader-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: multimedia
+      authentication-database: admin
+      username: root
+      password: root
+  http:
+    multipart:
+      enabled: true 
+      location: /images
+      max-file-size: 10MB
+      max-request-size: 11MB
+server:
+  port: 8090
