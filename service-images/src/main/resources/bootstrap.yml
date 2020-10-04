@@ -1,7 +1,7 @@
 spring:
   application:
     name: 
-      service-images
+      images-service
   profiles:
     active:
       default
@@ -15,4 +15,4 @@ spring:
         maxAttempts: 3
         maxInterval: 10000
       uri: 
-        http://server-config:8888 
+        http://server-config:8888      

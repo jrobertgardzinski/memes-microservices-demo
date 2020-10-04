@@ -18,6 +18,7 @@
   </parent>
   <modules>
     <module>server-configuration</module>
+    <module>server-eureka</module>
     <module>service-images</module>
   </modules>
   <build>

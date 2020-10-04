@@ -4,6 +4,10 @@ services:
     build: './server-configuration/'
     ports:
        - "8888:8888"
+  server-eureka:
+    build: './server-eureka/'
+    ports:
+       - "8761:8761"
   database:
     image: postgres:9.5
     ports:
