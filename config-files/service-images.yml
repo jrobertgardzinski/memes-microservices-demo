@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: images-service
+  datasource:
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://database:5432/memes
+    username: postgres
+    password: p0stgr@s
+    initialization-mode: always
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 8MB
+      max-request-size: 8MB
+server:
+  port: 8080
