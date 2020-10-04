@@ -17,7 +17,8 @@
     <version>1.4.4.RELEASE</version>
   </parent>
   <modules>
-    <module>service-reactive-images</module>
+    <module>server-configuration</module>
+    <module>service-images</module>
   </modules>
   <build>
     <plugins>
