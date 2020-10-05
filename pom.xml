@@ -21,6 +21,7 @@
     <module>server-eureka</module>
     <module>service-images</module>
     <module>service-images-metadata</module>
+    <module>service-tags</module>
   </modules>
   <build>
     <plugins>

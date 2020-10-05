@@ -30,3 +30,10 @@ services:
     environment:    
       DATABASESERVER_PORT:      "5432"
       CONFIGSERVER_PORT:        "8888"
+  service-tags:
+    build: './service-tags/'
+    ports:
+      - "8082:8082"
+    environment:    
+      DATABASESERVER_PORT:      "5432"
+      CONFIGSERVER_PORT:        "8888"
