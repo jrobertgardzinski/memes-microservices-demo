@@ -3,8 +3,12 @@ package pl.jrobertgardzinski.servicetags.repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -40,11 +44,22 @@ public class JdbcTagRepository {
 		return jdbc.query("SELECT * FROM tags",
 				this::mapRowToTag);
 	}
-	
+
 	public List<String> findByImageId(Integer id) {
 		
 		return jdbc.query(String.format("SELECT tag FROM tags WHERE image_ids_array && '{%d}'", id), 
 				this::mapRowToTagWithoutImageId);
+	}
+	
+	public Map<String, List<String>> findByImageIds(List<Integer> ids) {
+		
+		Map<String, List<String>> result = new HashMap();	
+		List<Tag> allTags = this.findAll();
+		ids.forEach(id -> {
+			List<String> tags = allTags.stream().filter(tag -> Arrays.asList(tag.getImageIds()).stream().anyMatch(currentId -> currentId == id)).map(Tag::getTag).collect(Collectors.toList());
+			result.put(id.toString(), tags);
+		});
+		return result;
 	}
 	
 	public void appendImageIdToTag(Integer id, String tag) {

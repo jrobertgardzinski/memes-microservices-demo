@@ -1,6 +1,7 @@
 package pl.jrobertgardzinski.servicetags.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -33,7 +34,12 @@ public class TagController {
 		return jdbcTagRepository.findByImageId(id);
 	}
 	
-	@RequestMapping(value = "/tags", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "tags/images", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Map<String, List<String>> getByImageIds(@RequestBody List<Integer> ids){
+		return jdbcTagRepository.findByImageIds(ids);
+	}
+	
+	@PostMapping(name="/tags", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void postImageIdToTag(@RequestBody Tag tag) {
 		jdbcTagRepository.appendImageIdToTag(tag.getImageId(), tag.getTag());
 	}

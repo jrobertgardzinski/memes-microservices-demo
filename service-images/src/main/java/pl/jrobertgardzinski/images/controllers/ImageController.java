@@ -5,14 +5,19 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.common.collect.Lists;
@@ -33,8 +39,12 @@ import pl.jrobertgardzinski.images.repository.ImageRepository;
 
 @RestController
 public class ImageController {
+	
 	@Autowired
 	ImageRepository imageRepository;
+	
+	@Autowired
+	RestTemplate restTemplate;
 	
 	@PostMapping("/images/add")
 	public String addImage(@RequestParam("title") String title, 
@@ -61,6 +71,19 @@ public class ImageController {
 	@GetMapping("/images")
 	public ResponseEntity<List<Image>> getAllImages() throws IOException {
 	    List<Image> images = Lists.newArrayList(imageRepository.findAll());
+	    
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.APPLICATION_JSON);
+	    HttpEntity<String> entity = new HttpEntity<String>('[' + images.stream().map(image -> image.getId().toString()).collect(Collectors.joining(",")) + ']' ,headers);	    
+    	ResponseEntity<Map> restExchange = 
+	    		restTemplate.exchange(
+	    				"http://service-tags/tags/images",
+	    				HttpMethod.POST,
+	    				entity,
+	    				Map.class);
+    	
+    	Map<String, List<String>> restResult = restExchange.getBody();
+    	images.forEach(image -> image.setTags(restResult.get(image.getId().toString())));
 	    	    
 	    return ResponseEntity.ok().body(images);
 	}
