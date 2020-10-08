@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: server-zuul
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://server-eureka:8761/eureka/
+      
+management: 
+  endpoints: 
+    web: 
+      exposure: 
+        include: 'routes'
+
+server:
+  port: 5555
+  
+zuul:
+  ignored-services: 'service-images-metadata'
+  routes:
+    service-images: /images/**
+    service-tags: /tags/**

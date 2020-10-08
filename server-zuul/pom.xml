@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pl.jrobertgardzinski</groupId>
-	<artifactId>server-configuration</artifactId>
+	<artifactId>server-zuul</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>server-configuration</name>
-	<description>Demo project for Spring Boot</description>
+	<name>server-zuul</name>
+	<description>Routing service</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -22,12 +22,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
+			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
 		</dependency>
-	    <dependency>
-	      <groupId>org.springframework.cloud</groupId>
-	      <artifactId>spring-cloud-starter-config</artifactId>
-	    </dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -39,6 +35,16 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>
+				spring-cloud-starter-netflix-eureka-client
+			</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -62,4 +68,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>

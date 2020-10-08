@@ -19,6 +19,8 @@
   <modules>
     <module>server-configuration</module>
     <module>server-eureka</module>
+    <module>server-zuul</module>
+    <module>server-security</module>
     <module>service-images</module>
     <module>service-images-metadata</module>
     <module>service-tags</module>

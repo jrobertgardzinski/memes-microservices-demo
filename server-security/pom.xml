@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pl.jrobertgardzinski</groupId>
-	<artifactId>server-configuration</artifactId>
+	<artifactId>server-security</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>server-configuration</name>
-	<description>Demo project for Spring Boot</description>
+	<name>server-security</name>
+	<description>Secutiry service</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -22,12 +22,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
+			<artifactId>spring-cloud-starter-security</artifactId>
 		</dependency>
-	    <dependency>
-	      <groupId>org.springframework.cloud</groupId>
-	      <artifactId>spring-cloud-starter-config</artifactId>
-	    </dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -40,6 +36,17 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>19.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<dependencyManagement>
@@ -62,4 +69,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>

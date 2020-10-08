@@ -41,5 +41,23 @@ public class Image {
 		this.title = title;
 	}
     
+    public Image withId(Integer id) {
+    	this.setId(id);
+    	return this;
+    }
     
+    public Image withTitle(String title) {
+    	this.setTitle(title);
+    	return this;
+    }
+    
+    public Image withTags(List<String> tags) {
+    	this.setTags(tags);
+    	return this;
+    }
+    
+    public Image withImage(byte[] image) {
+    	this.setImage(image);
+    	return this;
+    }
 }

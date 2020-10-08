@@ -8,6 +8,12 @@ services:
     build: './server-eureka/'
     ports:
        - "8761:8761"
+  server-zuul:
+    build: './server-zuul/'
+    ports:
+       - "5555:5555"
+    environment:
+       EUREKASERVER_PORT:   "8761"
   database:
     image: postgres:9.5
     ports:
