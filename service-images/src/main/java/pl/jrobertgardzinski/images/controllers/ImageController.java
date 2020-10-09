@@ -15,6 +15,9 @@ import java.util.stream.Stream;
 import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -96,7 +99,7 @@ public class ImageController {
 		};
 		
 	    Image image = new Image().withTags(new ArrayList<String>()).withTitle("Image not loaded properly!")
-    		.withImage(errorImage);
+    		.withImage("\\x424d96020000000000003600000028000000190000000800000001001800000000006002000000000000000000000000000000000000000000000000000000000000000000333333333333333333333333333333999999999999999999999999999999ccccccccccccccccccccccccccccccffffffffffffffffffffffffffffff00000000000000000000000000000000333333333333333333333333333333999999999999999999999999999999ccccccccccccccccccccccccccccccffffffffffffffffffffffffffffff000000000000ff0000ff0000ff00000033333300ffff33333300ffff33333399999900ff0099999900ff00999999ccccccffff00ffff00ccccccccccccffffffff0000ffffffff0000ffffff000000000000ff00000000000000000033333300ffff00ffff33333333333399999900ff0000ff00999999999999ccccccffff00ccccccffff00ccccccffffffff0000ff0000ffffffffffff000000000000ff0000ff00000000000033333300ffff33333300ffff33333399999900ff0099999900ff00999999ccccccffff00ccccccffff00ccccccffffffff0000ffffffff0000ffffff000000000000ff00000000000000000033333300ffff33333300ffff33333399999900ff0099999900ff00999999ccccccffff00ccccccffff00ccccccffffffff0000ffffffff0000ffffff000000000000ff0000ff0000ff00000033333300ffff00ffff33333333333399999900ff0000ff00999999999999ccccccccccccffff00ffff00ccccccffffffff0000ff0000ffffffffffff00000000000000000000000000000000333333333333333333333333333333999999999999999999999999999999ccccccccccccccccccccccccccccccffffffffffffffffffffffffffffff00".getBytes());
 	    
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.IMAGE_JPEG);
@@ -106,9 +109,10 @@ public class ImageController {
 	}
 	
 	@GetMapping()
-	public ResponseEntity<List<Image>> getAllImages() throws IOException {
-	    List<Image> images = Lists.newArrayList(imageRepository.findAll());
+	public ResponseEntity<Page<Image>> getAllImages(Pageable pageable) throws IOException {
 	    
+	    Page<Image> images =  imageRepository.findAll(pageable);
+
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);
 	    HttpEntity<String> entity = new HttpEntity<String>('[' + images.stream().map(image -> image.getId().toString()).collect(Collectors.joining(",")) + ']' ,headers);	    
