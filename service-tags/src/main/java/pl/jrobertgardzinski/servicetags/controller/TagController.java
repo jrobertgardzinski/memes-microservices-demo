@@ -43,9 +43,14 @@ public class TagController {
 	public void postImageIdToTag(@RequestBody Tag tag) {
 		jdbcTagRepository.appendImageIdToTag(tag.getImageId(), tag.getTag());
 	}
-	
+
 	@DeleteMapping() 
 	public void deleteImageIdFromTag(@RequestBody Tag tag) {
 		jdbcTagRepository.deleteImageIdFromTag(tag.getImageId(), tag.getTag());
+	}
+	
+	@DeleteMapping("image/{id}") 
+	public void deleteTagsForId(@PathVariable Integer id) {
+		jdbcTagRepository.deleteTagsForImageWithId(id);
 	}
 }

@@ -130,8 +130,10 @@ public class ImageController {
 	}
 	
 	@DeleteMapping("{id}")
-	public void deleteImage(@PathVariable Integer id) {
-		this.imageRepository.deleteById(id);
+	public void deleteImage(@PathVariable Integer id) {		
+		this.imageRepository.deleteById(id);		
+
+		restTemplate.delete("http://service-tags/image/" + id.toString());
 	}
 	
 	@PatchMapping("{id}")

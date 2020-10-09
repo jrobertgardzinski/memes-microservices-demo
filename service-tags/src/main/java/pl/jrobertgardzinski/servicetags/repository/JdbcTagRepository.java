@@ -91,4 +91,9 @@ public class JdbcTagRepository {
 				);
 		}
 	}
+
+	public void deleteTagsForImageWithId(Integer id) {
+		List<Tag> allTags = this.findAll();
+		allTags.forEach(tag -> this.deleteImageIdFromTag(id, tag.getTag()));
+	}
 }
