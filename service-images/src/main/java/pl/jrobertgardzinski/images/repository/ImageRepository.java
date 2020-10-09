@@ -10,5 +10,5 @@ import pl.jrobertgardzinski.images.model.Image;
 
 public interface ImageRepository extends CrudRepository<Image, Integer>, PagingAndSortingRepository<Image, Integer> {
 
-    Page<Image> findAll(Pageable pageable);
+    Page<Image> findAllByOrderByIdDesc(Pageable pageable);
 }
