@@ -23,3 +23,7 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://server-eureka:8761/eureka/
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://server-security:8901/user
