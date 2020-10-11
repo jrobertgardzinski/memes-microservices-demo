@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: server-security
+
+server:
+  port: 8901
+  
+security:
+  oauth2:
+    client:
+      client-id: eagleeye
+      client-secret: thisissecret

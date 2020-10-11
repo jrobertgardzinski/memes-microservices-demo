@@ -21,7 +21,12 @@ server:
   port: 5555
   
 zuul:
+  sensitive-headers:
   ignored-services: 'service-images-metadata'
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
   routes:
     service-images: /images/**
     service-tags: /tags/**
+    spring-security-oauth-resource:
+      path: /auth/**
+      url: http://server-security:8901/

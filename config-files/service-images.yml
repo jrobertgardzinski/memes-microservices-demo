@@ -27,3 +27,6 @@ security:
   oauth2:
     resource:
       userInfoUri: http://server-security:8901/user
+hibernate:
+  hbm2ddl:
+    auto

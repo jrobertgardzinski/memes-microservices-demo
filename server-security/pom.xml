@@ -22,7 +22,15 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-security</artifactId>
+			<artifactId>spring-cloud-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-oauth2</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
@@ -42,11 +50,6 @@
 		    <artifactId>guava</artifactId>
 		    <version>19.0</version>
 		</dependency>
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		
 	</dependencies>
 
 	<dependencyManagement>
