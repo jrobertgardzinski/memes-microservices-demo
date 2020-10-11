@@ -14,8 +14,14 @@ services:
        - "5555:5555"
     environment:
        EUREKASERVER_PORT:   "8761"
+  server-security:
+    build: './server-security/'
+    ports:
+       - "8901:8901"
+    environment:
+       ZUULSERVER_PORT:   "5555"
   database:
-    image: postgres:9.5
+    image: postgres:10
     ports:
       - "5432:5432"
     environment:
