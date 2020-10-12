@@ -1,12 +1,20 @@
-FROM node:10 as build-step
+# Stage 1
+FROM node:10-alpine as build-step
+
+RUN mkdir -p /app
+
 WORKDIR /app
-COPY package.json ./
-RUN npm install @angular/cli -g
-RUN npm i
-RUN ng build --prod
+
+COPY package.json /app
+
+RUN npm install
+
+COPY . /app
+
+RUN npm run build --prod
 
 
+# Stage 2
 FROM nginx:1.17.1-alpine
-RUN rm -rf /usr/share/nginx/html/*
-COPY --from=builder /usr/src/sample/dist/myapp /usr/share/nginx/html/
-CMD ["nginx", "-g", "daemon off;"]
+
+COPY --from=build-step /app/docs /usr/share/nginx/html
