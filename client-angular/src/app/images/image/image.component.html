@@ -1,0 +1,19 @@
+<h1>
+    <a (click)="showImageDetails(image.id)">
+        {{image['title']}}
+    </a>
+</h1>
+<ng-container *ngFor="let tag of image.tags">
+    <span>#{{ tag }}&nbsp;</span>
+</ng-container>
+<div class="container">
+    <div class="buttons-panel">
+        <button mat-raised-button color="primary" (click)="openUpdateDialog(image)">
+            Edit title
+        </button>
+        <button mat-raised-button color="warn" (click)="delete(image.id)">
+            Delete
+        </button>
+    </div>
+    <img [src]="image.image">
+</div>

@@ -1,0 +1,3 @@
+<div *ngFor="let element of toArray(numberOfPages)">
+    <button mat-fab [color]="colorActivePage(element)" (click)="emitChangePageEvent(element)">{{element}}</button>
+</div>

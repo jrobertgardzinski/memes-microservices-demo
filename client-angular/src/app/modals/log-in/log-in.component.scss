@@ -1,0 +1,7 @@
+button {
+    width: 100%;
+}
+
+button:not(:last-child) {
+    margin-bottom: 15px;
+}

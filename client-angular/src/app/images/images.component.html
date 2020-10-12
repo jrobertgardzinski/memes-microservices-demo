@@ -1,0 +1,4 @@
+<div *ngFor="let element of images">
+  <app-image [image]="element" (deleted)="delete($event)"></app-image>
+</div>
+<app-pagination [numberOfPages]="numberOfPages" [currentPage]="currentPage" (changePage)="changePage($event)"></app-pagination>

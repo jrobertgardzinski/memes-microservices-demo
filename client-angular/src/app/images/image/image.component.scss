@@ -1,0 +1,37 @@
+img {
+  width: 650px;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: #ddd;
+}
+
+a:hover {
+  border-bottom: 1px solid;
+  cursor: pointer;
+}
+
+
+.container {
+  position: relative;
+}
+
+.buttons-panel {
+  position: absolute;
+  right: 0;
+}
+
+.buttons-panel button {
+  margin: 8px 8px 0px 0px;
+  opacity: 0.6;
+}
+
+.container .btn:hover {
+  background-color: black;
+}

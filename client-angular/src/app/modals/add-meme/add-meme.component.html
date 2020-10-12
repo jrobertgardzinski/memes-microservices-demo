@@ -1,0 +1,14 @@
+<form [formGroup]="newMemeForm" style="display: table-caption;">
+  
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput type="text" formControlName="title">
+    </mat-form-field>    
+
+    <div style="margin-bottom: 12px;">
+      <input type="file" name="profile" (change)="onFileSelect($event)"/>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="submitForm()">Add</button>
+    <button mat-stroked-button color="primary" mat-dialog-close>Close</button>
+  </form>

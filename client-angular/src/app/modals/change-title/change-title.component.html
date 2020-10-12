@@ -1,0 +1,9 @@
+<form [formGroup]="form" style="display: table-caption;">
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput type="text" formControlName="title">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="submitForm()">Edit</button>
+    <button mat-stroked-button color="primary" mat-dialog-close>Close</button>
+  </form>

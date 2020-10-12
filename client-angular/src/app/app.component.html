@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <span>{{title}}</span>
+  <div class="nav-flex-container">
+    <button mat-raised-button color="accent" (click)="addMeme()">Add meme</button>
+    
+    <button *ngIf="!authorizationService.isLoggedIn(); else elseBlock" mat-icon-button (click)="logIn()" [matTooltip]="authorizationService.getUserData()"> <mat-icon>login</mat-icon></button>
+    <ng-template #elseBlock>
+      <button mat-icon-button (click)="logOut()" [matTooltip]="authorizationService.getUserData()"> <mat-icon>logout</mat-icon></button>
+    </ng-template>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
+<div class="footer flex-container">
+  <mat-icon class="flex-item" [inline]="true" style="font-size: 50px;">
+    mail_outline
+  </mat-icon>
+  <p class="flex-item" style="margin-top: auto; margin-bottom: auto;">
+    <a href="mailto:jrobertgardzinski@gmail.com">
+      jRobertGardzinski@gmail.com
+    </a>
+  </p>
+</div>
