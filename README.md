@@ -1,6 +1,16 @@
 # memes-microservices-demo
 
 Demonstrative project showing my skills in Spring Cloud development area.
+
+## Links to demo
+
+https://www.youtube.com/watch?v=Qxw1_JhrH98
+
+https://www.youtube.com/watch?v=liqFH__OB8g
+
+https://www.youtube.com/watch?v=v17P2ESkB4A
+
+https://www.youtube.com/watch?v=FPrxGhJh49A
  
 ## How to run project locally?
 
